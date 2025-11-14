@@ -147,3 +147,8 @@ export const SelectMark = css({
 	maskImage: `linear-gradient(to left, black ${GRADIENT_POINT._1}%, transparent ${GRADIENT_POINT._1}%, transparent ${GRADIENT_POINT._2}%, black ${GRADIENT_POINT._2}%), linear-gradient(to top, black ${GRADIENT_POINT._1}%, transparent ${GRADIENT_POINT._1}%, transparent ${GRADIENT_POINT._2}%, black ${GRADIENT_POINT._2}%)`,
 	animation: `${BlinkKeyframe} 1s linear infinite`,
 });
+export const BtnSwitch = css({
+	position: "fixed",
+	top: "10px",
+	left: "10px",
+});

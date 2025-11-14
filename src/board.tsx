@@ -1,19 +1,26 @@
 /** @jsxImportSource @emotion/react */
 
 import { useState } from "react";
-import { LINE, SQUARE_DEFAULT, SquareType } from "./constants";
+import {
+	BoardType,
+	LINE,
+	SQUARE_DEFAULT_BRITISH,
+	SQUARE_DEFAULT_FRENCH,
+	SquareType,
+} from "./constants";
 import { PegSquare } from "./peg_square";
 import * as Style from "./style";
 
 const INIT_SELECT = -1;
 
-const history: number[][] = [];
+let history: number[][] = [];
 /**
  * 枠コンポーネント
  */
 export function Board() {
+	const [board, setBoard] = useState(BoardType.BRITISH);
 	const [select, setSelect] = useState(INIT_SELECT);
-	const [squares, setSquares] = useState(SQUARE_DEFAULT.flat());
+	const [squares, setSquares] = useState(SQUARE_DEFAULT_BRITISH.flat());
 	/**
 	 * 飛び越えられるか
 	 * @param target 新しく選んだ先のマス
@@ -88,31 +95,51 @@ export function Board() {
 		setSquares(old);
 	};
 
-	return (
-		<div css={Style.Board}>
-			{squares.map((data, index) => {
-				const key = index;
+	const handleSwitch = () => {
+		const newBoard =
+			board === BoardType.BRITISH ? BoardType.FRENCH : BoardType.BRITISH;
 
-				return index === 0 ? (
-					<button
-						key={key}
-						css={Style.BtnUndo}
-						type="button"
-						onClick={handleUndo}
-					>
-						戻す
-					</button>
-				) : (
-					<PegSquare
-						key={key}
-						isSelect={select === index}
-						squareType={data}
-						onClick={() => {
-							handleClick(index);
-						}}
-					/>
-				);
-			})}
-		</div>
+		const newSquares = (
+			newBoard === BoardType.BRITISH
+				? SQUARE_DEFAULT_BRITISH
+				: SQUARE_DEFAULT_FRENCH
+		).flat();
+		setBoard(newBoard);
+		setSelect(INIT_SELECT);
+		setSquares(newSquares);
+		history = [];
+	};
+
+	return (
+		<>
+			<div css={Style.Board}>
+				{squares.map((data, index) => {
+					const key = index;
+
+					return index === 0 ? (
+						<button
+							key={key}
+							css={Style.BtnUndo}
+							type="button"
+							onClick={handleUndo}
+						>
+							戻す
+						</button>
+					) : (
+						<PegSquare
+							key={key}
+							isSelect={select === index}
+							squareType={data}
+							onClick={() => {
+								handleClick(index);
+							}}
+						/>
+					);
+				})}
+			</div>
+			<button css={Style.BtnSwitch} type="button" onClick={handleSwitch}>
+				英←→仏
+			</button>
+		</>
 	);
 }
