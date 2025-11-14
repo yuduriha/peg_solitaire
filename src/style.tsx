@@ -148,7 +148,7 @@ export const SelectMark = css({
 	animation: `${BlinkKeyframe} 1s linear infinite`,
 });
 export const BtnSwitch = css({
-	position: "fixed",
+	position: "absolute",
 	top: "10px",
 	left: "10px",
 });
