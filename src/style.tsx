@@ -29,6 +29,8 @@ export const BtnUndo = css({
 export const Board = css({
 	width: "80vmin",
 	height: "80vmin",
+	minWidth: "350px",
+	minHeight: "350px",
 	margin: "auto",
 	display: "grid",
 	gridTemplateColumns: "repeat(7, 1fr)",
@@ -79,8 +81,10 @@ export const Marble = css({
 	backgroundColor: "#182879",
 	backgroundImage:
 		"radial-gradient(90% 90% at 65% 80%, #48bffe 20%, transparent)",
-	boxShadow:
-		"-7px -20px 7px -10px rgba(26,68,111,0.9) inset, 0px 30px 5px -10px rgba(0,0,0,0.3), inset 0 0 10px 0px #fff, inset 0 0 25px 0px #fff",
+	boxShadow: `
+		-7px -20px 7px -10px rgba(26,68,111,0.9) inset,
+		inset 0 0 10px 0px #fff,
+		inset 0 0 25px 0px #fff`,
 	position: "relative",
 });
 /**
