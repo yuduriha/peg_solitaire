@@ -8,6 +8,8 @@ export default defineConfig({
 			jsxImportSource: "@emotion/react",
 		}),
 	],
+	// github pages 用。index.htmlのアセットのパスに "./" がないと表示されないので。
+	base: process.env.GITHUB_PAGES ? "reactailwind" : "./",
 	build: {
 		outDir: "docs",
 	},
