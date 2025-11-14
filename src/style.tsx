@@ -7,6 +7,7 @@ const checkeredPattern = {
 	size: 50,
 };
 export const Wrapper = css({
+	position: "relative",
 	width: "100vw",
 	height: "100vh",
 	background: `linear-gradient(45deg, ${checkeredPattern.color0} 25%, transparent 25%, transparent 75%, ${checkeredPattern.color0} 75%), linear-gradient(45deg, ${checkeredPattern.color0} 25%, transparent 25%, transparent 75%, ${checkeredPattern.color0} 75%)`,
