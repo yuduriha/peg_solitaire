@@ -84,6 +84,7 @@ export function Board() {
 		const old = history.pop();
 
 		if (!old) return;
+		setSelect(INIT_SELECT);
 		setSquares(old);
 	};
 
